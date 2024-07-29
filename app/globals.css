@@ -35,7 +35,10 @@
   .sidebar {
     @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
   }
-
+.info-container {
+  @apply flex flex-col gap-6 xl:flex-row
+  
+}
   .left-sidebar {
     @apply hidden lg:flex;
   }
