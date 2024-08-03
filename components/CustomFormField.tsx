@@ -20,6 +20,7 @@ import Image from 'next/image'
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { SelectTrigger, Select, SelectContent, SelectValue } from './ui/select';
 
 interface CustomProps {
     control: Control<any>,
@@ -99,6 +100,26 @@ const RenderField: React.FC<{ field: any, props: CustomProps }> = ({ field, prop
                 </div>
             );
        
+            case FormFieldType.SELECT:
+                return (
+                    <FormControl>
+                        <Select defaultValue={field.value} 
+                        onValueChange={field.onChange}>
+
+                            <FormControl>
+                                <SelectTrigger className='shad-select-trigger' >
+                                    <SelectValue placeholder={placeholder}/>
+
+                                </SelectTrigger>
+                            </FormControl>
+
+                            <SelectContent className='shad-select-content'>
+                                {props.children}
+                            </SelectContent>
+
+                        </Select>
+                    </FormControl>
+                )
             case FormFieldType.SKELETON:
                 return renderSkeleton ? renderSkeleton({ field }) : null
 
